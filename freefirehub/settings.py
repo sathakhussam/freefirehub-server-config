@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'freefirehub.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2-binary',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'freefirehub',
         'USER': 'uzham',
         'PASSWORD': 'satush12',
