@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% load listings_extras %}
+{% block title %}
+<title>Buy Now</title>
+{% endblock %}
+{% block body %}
+{% if listing %}
+<div class="container">
+    <h1><b>Buy This Account!</b></h1>
+    <h3>Seller : {{ listing.seller_user }}</h3>
+    <h3>Price : ₹{{ listing.price }}</h3>
+    <button class="custom-btn"><a href="{% url 'listing_buy_confirm' listing.id%}">buy now</a></button>
+</div>
+{% else %}
+    <h1>Sorry!</h1>
+    <h3>Seller can't buy their own listing</h3> 
+{% endif %}
+{% endblock %}

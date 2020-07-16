@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load listings_extras %}
+{% block title %}
+<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+{% endblock %}
+{% block body %}
+{% if listing %}
+
+<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+
+    <div class="container">
+        <!-- video player configuration -->
+        <video
+        id="my-video"
+        class="video-js"
+        controls
+        preload="auto"
+        width=960
+        height=540
+        poster="{{ listing.photo_main.url }}"
+        data-setup="{}"
+        class="videoplayer"
+      >
+        <source src="{{ listing.video_main.url }}" type="video/mp4" />
+        <!-- <source src="MY_VIDEO.webm" type="video/webm" /> -->
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a
+          web browser that
+          <a href="https://videojs.com/html5-video-support/" target="_blank"
+            >supports HTML5 video</a
+          >
+        </p>
+      </video>
+    </div>
+    <div class="container">
+        <div class="single-portfolio-wrapper">
+            <div class="row">
+                <div class="col-md-8 col-sm-8">
+                    <h1>Account Level : {{ listing.level}}</h1>
+                    <span class="info">Price : ₹{{ listing.price }}</span>
+                    <span class="info">Account ID : {{ listing.freefire_id|sliceindice:3 }}*******</span>
+                    {% if owner %}
+                    <p><b>Only you can see this</b></p>
+                    <span class="info">Published : {{ listing.is_published }}</span>
+                    <span class="info">Sold : {{ listing.is_sold }}</span>
+                    <span class="info">Signed Up With : {{ listing.signed_up_with }}</span>
+                    <span class="info">Account Email : {{ listing.account_email }}</span>
+                    <span class="info">Account Password : {{ listing.account_password }}</span>
+                    {% endif%}
+                    {% if buyer%}
+                    <p><b>Only you can see this</b></p>
+                    <span class="info">Signed Up With : {{ listing.signed_up_with }}</span>
+                    <span class="info">Account Email : {{ listing.account_email }}</span>
+                    <span class="info">Account Password : {{ listing.account_password }}</span>
+                    {% endif%}
+                    <p>{{ listing.description}}</p>
+                </div>
+                <div class="col-md-3 col-md-offset-1 col-sm-4">
+                    <div class="project-information">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Date:</td>
+                                    <td>{{listing.posted_date}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Client:</td>
+                                    <td>{{listing.seller_user}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Freefire Username:</td>
+                                    <td>{{ listing.username|sliceindice:3}}**********</td>
+                                </tr>
+                                <!-- <tr>
+                                    <td>Visit:</td>
+                                    <td><a href="http://www.envato.com" target="_blank">envato.com</a></td>
+                                </tr> -->
+                                <tr>
+                                    <td>Share:</td>
+                                    <td>
+                                        <ul class="social-buttons">
+                                            <li><a href="javasript:void(0);" data-social="fb"><i class="iconmoon-facebook"></i></a></li>
+                                            <li>
+                                                <a href="javascript:void(0);" data-social="tw"> <i class="iconmoon-twitter"></i></a>
+                                            </li>
+                                            <li><a href="javascript:void(0);" data-social="pt"><i class="iconmoon-pinterest"></i></a></li>
+                                            <li><a href="javascript:void(0);" data-social="ln"><i class="iconmoon-linkedin"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="portfolio-controls">
+            <div class="btn-project home-btn">
+                <a href="{% url 'listings' %}" data-hover="Home">
+                    <i class="pe-7s-keypad"></i>
+                </a>
+            </div>
+            <div class="btn-project back-btn">
+                <a href="{% url 'listing_buy' listing.pk %}" data-hover="Buy Now">
+                    <i class="ion-bag"></i>
+                </a>
+            </div>
+            <!-- {% if listing_after %}
+            <div class="btn-project forward-btn">
+                <a href="#" data-hover="Next">
+                    <i class="pe-7s-angle-right right"></i>
+                </a>
+            </div>
+            {% endif %}
+            {% if listing_before %}
+            <div class="btn-project back-btn">
+                <a href="#" data-hover="Previous">
+                    <i class="pe-7s-angle-left left"></i>
+                </a>
+            </div>
+            {% endif%} -->
+        </div>
+    </div>
+    <div class="container margin-top">
+
+    </div>
+    <!-- video player  -->
+    <script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
+
+{% else %}
+    <h4>Sorry, The listing is not published!</h4>
+{% endif %}
+{% endblock %}
+        <!-- <div class="similar-project">
+            <h4>Listings</h4>
+            <div class="row">
+                {% if listing_before %}
+                <div style="padding-bottom: 5rem;" class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="img">
+                        <img src="{{ listing_before.photo_main.url }}" alt="Portfolio Item">
+                        <div class="overlay-thumb">
+                            <a href="javascript:void(0)" class="like-product">
+                                <i class="ion-ios-heart-outline"></i>
+                                <span class="like-product">Liked</span>
+                                <span class="output">256</span>
+                            </a>
+                            <div class="details">
+                                <span class="title">Level : {{ listing_before.level}}</span>
+                                <span class="info">Price : Rs {{ listing_before.price }}</span>
+                                <span class="info">Seller : {{ listing_before.seller_user }}</span>
+                            </div>
+                            <span class="btnBefore"></span>
+                            <span class="btnAfter"></span>
+                            <a class="main-portfolio-link" href="{% url 'listing' listing_before.id %}"></a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>      
+            {% if listing_after %}
+            <div style="padding-bottom: 5rem;" class="col-md-6 col-sm-6 col-xs-12">
+                <div class="img">
+                    <img src="{{ listing_after.photo_main.url }}" alt="Portfolio Item">
+                    <div class="overlay-thumb">
+                        <a href="javascript:void(0)" class="like-product">
+                            <i class="ion-ios-heart-outline"></i>
+                            <span class="like-product">Liked</span>
+                            <span class="output">256</span>
+                        </a>
+                        <div class="details">
+                            <span class="title">Level : {{ listing_after.level}}</span>
+                            <span class="info">Price : Rs {{ listing_after.price }}</span>
+                            <span class="info">Seller : {{ listing_after.seller_user }}</span>
+                        </div>
+                        <span class="btnBefore"></span>
+                        <span class="btnAfter"></span>
+                        <a class="main-portfolio-link" href="{% url 'listing' listing_after.id %}"></a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div> -->

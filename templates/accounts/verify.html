@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <form class="contact-form" style="padding: 2rem 0;" method="post">
+        {% csrf_token %}
+        <h1>Please verify your email</h1>
+        {% if email%}
+        <p>Your email is {{ email }}, change your <a href="{% url 'register' %}">Email</a></p>
+        {% endif %}
+        <input type="number" name="otp_field" placeholder="OTP">
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %} 
+        <input style="width: 90%;" class="custom-btn" type="submit" value="submit">
+        <a style=" margin:0 5px;padding:14px 10px;height: 48px!important; width: 100%;" href="{% url 'resend_otp' %}" class="custom-btn">Resend</a>
+    </form>
+</div>
+{% endblock %}

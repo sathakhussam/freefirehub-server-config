@@ -1,0 +1,73 @@
+#slider-ef{
+    width: 117rem!important;
+    height: 61rem!important;
+    object-fit: cover;
+}
+
+#history-images img{
+    width: 47rem!important;
+    height: 50rem!important;
+    object-fit: cover;
+}
+#history-images img{
+    width: 37rem!important;
+    height: 40rem!important;
+    object-fit: cover;
+}
+.home-portfolio-image img {
+    width: 48rem!important;
+    height: 27rem!important;
+    object-fit: cover;
+}
+#my-own-img-custom-1 img{
+    width: 35rem!important;
+    height: 40rem!important;
+    object-fit: cover;
+}
+
+/* for password input  */
+/*field inputs*/
+.contact-form input{
+    border: 1px solid #e6e6e6;
+    padding-left: 10px;
+}
+
+.contact-form input:focus{
+    border: 1px solid #111;
+}
+.contact-form input {
+    height: 50px;
+    width: 100%;
+}
+
+.js-ui-search input{
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    height: 20px;
+    line-height: 20px;
+}
+.js-ui-search input:focus {
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+}
+
+.custom-btn{
+    width: 100%;
+    height: 48px;
+    outline: 0;
+    border: 0;
+    background-color: #7beec7;
+    font-size: 18px;
+    color: #fff!important;
+    font-weight: 500;
+    letter-spacing: 2pt;
+}
+
+.custom-btn a{
+    color: #fff!important;
+}
+.custom-btn a:hover{
+    color: #000!important;
+}

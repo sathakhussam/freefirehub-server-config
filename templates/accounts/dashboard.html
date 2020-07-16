@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h1>Dashboard</h1>
+    {% if listings %}
+    <h3><b>Your Listings</b></h3>
+    <div class="js-masonry">
+        <div class="row" id="work-grid">
+            <!-- Begin of Thumbs Portfolio -->
+            {% for list in listings %}
+            <div class="col-md-6 col-sm-6 col-xs-12 mix branding">
+                <div class="img home-portfolio-image">
+                    <img src="{{ list.photo_main.url }}" alt="Portfolio Item">
+                    <div class="overlay-thumb">
+                        <a href="javascript:void(0)" class="like-product">
+                            <i class="ion-ios-heart-outline"></i>
+                        </a>
+                        <div class="details">
+                            <span class="title">Level : {{ list.level}}</span>
+                            <span class="info">Price : ₹{{ list.price }}</span>
+                            <span class="info">Seller : {{ list.seller_user }}</span>
+                            <span class="info">Published: {{ list.is_published }}</span>
+                            <span class="info">Sold: {{ list.is_sold }}</span>
+                        </div>
+                        <span class="btnBefore"></span>
+                        <span class="btnAfter"></span>
+                        <a class="main-portfolio-link" href="{% url 'listing' list.id %}"></a>
+                    </div>
+                </div>
+            </div>                
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <h3 style="margin-bottom: 2.5rem;">Sorry you don't have any lisitngs </h3>
+    {% endif %}
+    <button style="color: #fff!important;" class="custom-btn"><a style="color: #fff!important;" href="{% url 'listing_create' %}">Create New</a></button>
+    <h3><b>Your Own Sales</b></h3>
+    {% if sales %}
+   {% for sale in sales %}
+   <div class="js-masonry">
+       <div class="row" id="work-grid">
+           <!-- Begin of Thumbs Portfolio -->
+           <div class="col-md-6 col-sm-6 col-xs-12 mix branding">
+               <div class="img home-portfolio-image">
+                   <img src="{{ sale.ListingAcc.photo_main.url }}" alt="Portfolio Item">
+                   <div class="overlay-thumb">
+                       <a href="javascript:void(0)" class="like-product">
+                           <i class="ion-ios-heart-outline"></i>
+                        </a>
+                        <div class="details">
+                            <span class="title">Level : {{ sale.ListingAcc.level}}</span>
+                            <span class="info">Price : ₹{{ sale.ListingAcc.price }}</span>
+                            <span class="info">Seller : {{ sale.ListingAcc.seller_user }}</span>
+                            <span class="info">Signed Up With : {{ sale.ListingAcc.signed_up_with }}</span>
+                            <span class="info">Account Email : {{ sale.ListingAcc.account_email }}</span>
+                            <span class="info">Account Password : {{ sale.ListingAcc.account_password }}</span>
+                        </div>
+                        <span class="btnBefore"></span>
+                        <span class="btnAfter"></span>
+                        <a class="main-portfolio-link" href="{% url 'listings' %}"></a>
+                    </div>
+                </div>
+            </div>                
+        </div>
+    </div>
+    {% endfor%}
+    </table>
+    {% else %}
+    <h3 style="margin-bottom: 2.5rem;">Sorry you haven't have bought anything </h3>
+    {% endif %}
+    <button style="color: #fff!important;" class="custom-btn"><a style="color: #fff!important;" href="{% url 'listings' %}">Buy Now</a></button>
+</div>
+{% endblock %}

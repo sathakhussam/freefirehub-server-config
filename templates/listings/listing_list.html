@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+<title>Listings</title>
+{% endblock%}
+{% block body%}
+<div class="container">
+	<div class="header-page ef-parallax-bg" style="background-image:url({% static 'img/about-header.jpg'%}); background-size: cover;">
+		<div class="col-md-6 col-md-offset-6">
+			<div class="row">
+				<div class="inner-content">
+					<div class="header-content">
+						<h1>Listings</h1>
+						<hr>
+						<p>Everything created in simple way</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container margin-top">
+<h1 style="margin-bottom: 2.5rem;"><b>Listings</b> </h1>
+
+
+{% if listings%}
+
+		<div class="portfolio-wrapper">
+	
+			<!-- <div class="works-filter">
+				<a href="javascript:void(0)" class="filter active" data-filter="mix">All</a>
+				<a href="javascript:void(0)" class="filter" data-filter="branding">Branding</a>
+				<a href="javascript:void(0)" class="filter" data-filter="web">Web Design</a>
+				<a href="javascript:void(0)" class="filter" data-filter="graphic">Graphic Design</a>
+			</div> -->
+			<div class="js-masonry">
+				<div class="row" id="work-grid">
+					<!-- Begin of Thumbs Portfolio -->
+					{% for list in listings %}
+					<div class="col-md-6 col-sm-6 col-xs-12 mix branding">
+						<div class="img home-portfolio-image">
+							<img src="{{ list.photo_main.url }}" alt="Portfolio Item">
+							<div class="overlay-thumb">
+								<a href="javascript:void(0)" class="like-product">
+									<i class="ion-ios-heart-outline"></i>
+									<span class="like-product">Liked</span>
+									<span class="output">250</span>
+								</a>
+								<div class="details">
+									<span class="title">Level : {{ list.level}}</span>
+									<span class="info">Price : ₹{{ list.price }}</span>
+									<span class="info">Seller : {{ list.seller_user }}</span>
+								</div>
+								<span class="btnBefore"></span>
+								<span class="btnAfter"></span>
+								<a class="main-portfolio-link" href="{% url 'listing' list.id %}"></a>
+							</div>
+						</div>
+					</div>                
+					{% endfor %}
+				</div>
+			</div>
+
+			<!-- <div class="load-more">
+				<a href="javascript:void(0)" id="load-more"><i class="icon-refresh"></i></a>
+			</div> -->
+		</div>
+
+{% else %}
+<h1 style="margin-bottom: 2.5rem;">Sorry No Listings Available Now!</h1>
+{% endif %}
+	<button style="color: #fff!important;" class="custom-btn"><a style="color: #fff!important;" href="{% url 'listing_create' %}">Create New</a></button>
+</div>
+{% endblock%}

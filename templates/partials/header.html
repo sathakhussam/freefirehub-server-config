@@ -1,0 +1,67 @@
+{% load static %}
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <h1>FreeFireHub</h1>
+                
+            </a>
+
+        </div>
+        
+        <!-- Menu Hamburger (Default) -->
+        <button class="main-menu-indicator" id="open-button">
+            <span class="line"></span>
+        </button>
+        
+        <div class="menu-wrap" style="background-image: url({% static 'img/nav_bg.jpg'%})">
+            <div class="menu-content">
+                <div class="navigation">
+                    <span class="pe-7s-close close-menu" id="close-button"></span>
+                    <div class="search-wrap js-ui-search">
+                        <input class="js-ui-text" type="text" placeholder="Search Here...">
+                        <span class="eks js-ui-close"></span>
+                    </div>
+                </div>
+                <nav class="menu">
+                    <div class="menu-list">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a>
+                            </li>
+                            <li><a href="{% url 'about' %}"">About</a></li>
+                            <li><a href="{% url 'listings' %}">Listings</a>
+                            </li>
+                            <!-- <li><a href="contact.html">Contact</a> -->
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                            {% else %}
+                            <li><a href="{% url 'login' %}">Login</a></li>
+                            <li><a href="{% url 'register' %}">Register</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="hidden-xs">
+                    <div class="menu-social-media">
+                        <ul>
+                           <li><a href="https://www.facebook.com/Free-Fire-Hub-106476461146908"><i class="iconmoon-facebook"></i></a></li>
+                           <li><a href="https://twitter.com/freefirehub1"><i class="iconmoon-twitter"></i></a></li>
+                           <li><a href="https://in.pinterest.com/freefirehubassociate"><i class="iconmoon-pinterest"></i></a></li>
+                           <li><a href="https://instagram.com/free_firehub"><i class="iconmoon-instagram"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-information">
+                        <ul>
+                            <li><span>T:</span> 637 981 3960</li>
+                            <li><span>E:</span> sathakhussam@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Menu Hamburger (Default) -->
+    </div>
+</div>
