@@ -25,7 +25,7 @@ SECRET_KEY = 'e8k$%1y&e%09llgdahn7ef&cf6j)c-m#lb_9hw^y-0t5qx(u!c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['13.125.75.53', 'localhost', '127.0.0.1'] 
+ALLOWED_HOSTS = ['freefirehub.ga', 'www.freefirehub.ga', '52.78.162.134', '13.125.75.53', 'localhost', '127.0.0.1'] 
 # ALLOWED_HOSTS = []
 
 
@@ -81,10 +81,15 @@ WSGI_APPLICATION = 'freefirehub.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'freefirehub',
+        'USER': 'uzham',
+        'PASSWORD': 'satush12',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -140,6 +145,6 @@ EMAIL_HOST_USER = "freefirehubassociate@gmail.com"
 EMAIL_HOST_PASSWORD = "USajMm13jul"
 
 # # deploy measures
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# SECURE_REFERRER_POLICY = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_REFERRER_POLICY = True
