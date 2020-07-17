@@ -152,6 +152,7 @@
                 <div class="newsletter-right" style="background: url({% static 'img/newsletter-bg.jpg'%})">
                     <div class="newsletter-right-inner">
                         <form method="POST">
+                            {% csrf_token %}
                             <input type="text" name="newsletter" placeholder="ENTER YOUR EMAIL">
                             <input type="submit" value="SUBSCRIBE">
                         </form>
