@@ -12,7 +12,7 @@ def get_upload_path(instance, filename):
 	return f'{instance.seller_user}/{instance.username}/{filename}'
 class Listing(models.Model):
 	seller_user = models.ForeignKey(MyUser, on_delete=models.SET_NULL, null=True)
-	freefire_id = models.BigIntegerField(unique=True, validators=[])
+	freefire_id = models.CharField(max_length=100,unique=True)
 	level = models.PositiveIntegerField(validators=[])
 	username = models.CharField(unique=True, max_length=264)
 	description = models.TextField()
