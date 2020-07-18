@@ -6,8 +6,8 @@ class create_listing(forms.ModelForm):
         fields = ['freefire_id','username','level', 'description', 'estimated_price','signed_up_with', 'account_email','account_password','photo_main','video_main']
         widget = {
             'video_main': forms.FileInput(attrs={'accept': 'video/*'}),
-            'photo_main': forms.FileInput(attrs={'class':'sample','accept': 'image/*'})
-            'freefire_id': forms.NumberInput(attrs={})
+            'photo_main': forms.FileInput(attrs={'class':'sample','accept': 'image/*'}),
+            'freefire_id': forms.NumberInput(attrs={}),
         }
 class paymentsabout(forms.ModelForm):
     class Meta():
