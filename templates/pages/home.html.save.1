@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Home</title>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="slider-wrapper">
+        <div class="slider-description">
+            <div class="slider-description-inner">
+                <h1>FreeFire<span>Hub</span></h1>
+            </div>
+            <div class="cd-intro">
+                <div class="cd-headline clip">
+                    <span class="cd-words-wrapper">
+                        <b class="is-visible">BEST PLACE</b>
+                        <b>TO BUY AND SELL</b>
+                        <b>FREEFIRE ACCOUNTS</b>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="slider-ef" class="slider-images-wrapper">
+            <img class="img-responsive" src="{% static 'img/slider/image_1.jpg'%}" alt="">
+            <img class="img-responsive" src="{% static 'img/slider/image_2.jpg'%}" alt="">
+            <img class="img-responsive" src="{% static 'img/slider/image_3.jpg'%}" alt="">
+            <!-- <img class="img-responsive" src="img/slider/image_4.jpg" alt=""> -->
+            <!-- <img class="img-responsive" src="img/slider/image_2.jpg" alt="">
+            <img class="img-responsive" src="img/slider/image_3.jpg" alt=""> -->
+        </div>
+    </div>
+</div>
+<div class="container margin-top">
+    <div class="history-wrapper">
+        <div class="col-md-6 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.5s">
+            <div class="row">
+                <article>
+                    <h1>HISTORY OF US</h1>
+                    <hr>
+                    <h4>WE LOVE TO HELP EVERYONE WHO NEEDS HELP AND THIS IS A PART OF HELPING COMMUNITY WE HELP TO SELL ANYONE'S ACCOUNT</h4>
+                    <p>
+                    <br/>WE ARE HERE A PART OF THREE MEMBERS WHO LIKES TO HELP EVERYONE ON THIER NEED TO SELL THIER FREEFIRE ACCOUNT TO SOMEONE AND THIER ACCOUNTS ARE SOLD IN A COMPLETELY PRIVATE AND SECURE ENVIRONMENT AND THEY ARE MADE WITHIN SECURE SAFE AND TRUSTED GATEWAY.</p>
+                </article>
+            </div>
+        </div>
+            <div class="col-md-5 col-md-offset-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                <div class="row">
+                    <div id="history-images" class="owl-carousel">
+                        <div><img class="img-responsive center-block" src="{% static 'img/about_img.jpg'%}" alt="About"></div>
+                        <div><img class="img-responsive center-block" src="{% static 'img/about_img2.jpg'%}" alt="About"></div>
+                        <div><img class="img-responsive center-block" src="{% static 'img/about_img3.jpg'%}" alt="About"></div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+<div class="container margin-top">
+    <div class="main-title">
+        <h1>WHY CHOOSE US?</h1>
+        <hr>
+        <h6>Except to obtain some advantage from it</h6>
+    </div>
+    <div class="services-home-page">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="services-icon">
+                    <span class="icon-tools"></span>
+                    <hr>
+                </div>
+                <h4>TRUSTED</h4>
+                <p>You can completely rely on us without any hesitations since we do provide yourself with enough information of ourself and allow you to gain an edge over to sell your product</p>
+            </div>
+            <div class="col-md-4">
+                <div class="services-icon">
+                    <span class="icon-globe"></span>
+                    <hr>
+                </div>
+                <h4>SAFE PAYMENTS</h4>
+                <p>Since we are completely TRUSTED persons. You are assured with an safe payments gateway and you are accounts and its details are completely hashed and privatized for more safety</p>
+            </div>
+            <div class="col-md-4">
+                <div class="services-icon">
+                    <span class="icon-paintbrush"></span>
+                    <hr>
+                </div>
+                <h4>EASIER TO SELL</h4>
+                <p>Since this websites sole purpose is to BUY and SELL Freefire accounts so there are lots of people who need to buy an awesome accounts and as well sell an account at their own reasonable rate</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container margin-top">
+    <div class="main-title">
+        <h1>OUR LISTINGS</h1>
+        <hr>
+        <h6>Laborious to obtain some advantage from it</h6>
+    </div>
+    {% if listings %}
+
+		<div class="portfolio-wrapper">
+
+			<div class="js-masonry">
+				<div class="row" id="work-grid">
+					<!-- Begin of Thumbs Portfolio -->
+					{% for list in listings %}
+					<div class="col-md-6 col-sm-6 col-xs-12 mix branding">
+						<div class="img home-portfolio-image">
+							<img src="{{ list.photo_main.url }}" alt="Portfolio Item">
+							<div class="overlay-thumb">
+								<a href="javascript:void(0)" class="like-product">
+									<i class="ion-ios-heart-outline"></i>
+									<span class="like-product">Liked</span>
+									<span class="output">250</span>
+								</a>
+								<div class="details">
+									<span class="title">Level : {{ list.level}}</span>
+									<span class="info">Price : ₹{{ list.price }}</span>
+									<span class="info">Seller : {{ list.seller_user }}</span>
+								</div>
+								<span class="btnBefore"></span>
+								<span class="btnAfter"></span>
+								<a class="main-portfolio-link" href="{% url 'listing' list.id %}"></a>
+							</div>
+						</div>
+					</div>                
+					{% endfor %}
+				</div>
+			</div>
+			<!-- <div class="load-more">
+				<a href="javascript:void(0)" id="load-more"><i class="icon-refresh"></i></a>
+			</div> -->
+		</div>
+
+{% else %}
+<h1>Sorry No Listings Available Now!</h1>
+{% endif %}
+    </div>
+<div class="container margin-top">
+    <div class="newsletter">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="newsletter-left">
+                    <div class="newsletter-left-inner">
+                        <h1>STAY INFORMED <br> WITH OUR <b>NEWSLETTER</b></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="newsletter-right" style="background: url({% static 'img/newsletter-bg.jpg'%})">
+                    <div class="newsletter-right-inner">
+                        <form method="POST">
+				{# csrf_token #}
+                            <input type="text" name="newsletter" p                            <input type="submit" value="SUBSCRIBE">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="javascript:void(0)" class="scroll-top" id="scroll-top"><i class="pe-7s-angle-up"></i></a>
+{% endblock %}
