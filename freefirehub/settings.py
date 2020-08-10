@@ -25,7 +25,7 @@ SECRET_KEY = 'e8k$%1y&e%09llgdahn7ef&cf6j)c-m#lb_9hw^y-0t5qx(u!c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['freefirehub.ga', 'www.freefirehub.ga', '52.78.162.134', '13.125.75.53', 'localhost', '127.0.0.1'] 
+ALLOWED_HOSTS = ['freefirehub.ga', 'www.freefirehub.ga', '15.165.76.121', 'localhost', '127.0.0.1'] 
 # ALLOWED_HOSTS = []
 
 
@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'freefirehub',
-        'USER': 'uzham',
-        'PASSWORD': 'satush12',
+        'USER': 'uzham_freefirehub',
+        'PASSWORD': 'SatHus16',
         'HOST': 'localhost',
         'PORT': '',
     }
